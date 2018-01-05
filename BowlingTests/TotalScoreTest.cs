@@ -1,9 +1,8 @@
-using System;
 using Xunit;
 
 namespace BowlingTests
 {
-    public class UnitTest1
+    public class TotalScoreTest
     {
         [Fact]
         public void Test1()
