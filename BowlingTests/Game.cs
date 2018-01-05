@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BowlingTests
 {
     public class Game
     {
-        private string scoreSheet;
+        private List<Frame> frames = new List<Frame>();
 
         public Game(string scoreSheet)
         {
-            this.scoreSheet = scoreSheet;
+            foreach(string frameScoreSheet in scoreSheet.Split(' '))
+            {
+                frames.Add(new Frame(frameScoreSheet));
+            }
         }
 
         public int TotalScore { get { throw (new NotImplementedException()); } }
