@@ -1,4 +1,7 @@
-﻿namespace BowlingTests
+﻿using System;
+using System.Collections.Generic;
+
+namespace BowlingTests
 {
     public class Frame
     {
@@ -8,5 +11,7 @@
         {
             this.frameScoreSheet = frameScoreSheet;
         }
+
+        public int[] Throws { get { throw (new NotImplementedException()); } }
     }
 }
