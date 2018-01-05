@@ -19,6 +19,8 @@ namespace BowlingTests
 
         private int getNumberOfThrowsFromScoreCardChar(char c)
         {
+            if (char.IsNumber(c)) return Convert.ToInt32(c.ToString());
+
             return 0;
         }
 
