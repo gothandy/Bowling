@@ -5,13 +5,23 @@ namespace BowlingTests
 {
     public class Frame
     {
-        private string frameScoreSheet;
+        private int[] throws;
 
         public Frame(string frameScoreSheet)
         {
-            this.frameScoreSheet = frameScoreSheet;
+            throws = new int[frameScoreSheet.Length];
+
+            for (int i = 0; i < frameScoreSheet.Length; i++)
+            {
+                throws[i] = getNumberOfThrowsFromScoreCardChar(frameScoreSheet[i]);
+            }
         }
 
-        public int[] Throws { get { throw (new NotImplementedException()); } }
+        private int getNumberOfThrowsFromScoreCardChar(char c)
+        {
+            return 0;
+        }
+
+        public int[] Throws => throws;
     }
 }
