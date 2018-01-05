@@ -27,7 +27,17 @@ namespace BowlingTests
 
                     if (frames[i].IsSpare) total += frames[i + 1].Throws[0];
 
-                    if (frames[i].IsStrike) total += frames[i + 1].Total;
+                    if (frames[i].IsStrike)
+                    {
+                        if (frames[i+1].IsStrike)
+                        {
+                            total += frames[i + 1].Throws[0] + frames[i + 2].Throws[0];
+                        }
+                        else
+                        {
+                            total += frames[i + 1].Throws[0] + frames[i + 1].Throws[1];
+                        }
+                    }
                 }
 
                 return total;
