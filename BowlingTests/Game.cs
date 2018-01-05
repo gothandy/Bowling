@@ -15,6 +15,17 @@ namespace BowlingTests
             }
         }
 
-        public int TotalScore { get { throw (new NotImplementedException()); } }
+        public int TotalScore => GetTotalScore();
+
+        private int GetTotalScore()
+        {
+            int total = 0;
+            foreach(Frame frame in frames)
+            {
+                foreach (int t in frame.Throws) total += t;
+            }
+
+            return total;
+        }
     }
 }
