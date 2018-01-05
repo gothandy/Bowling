@@ -20,5 +20,25 @@ namespace BowlingTests
 
             Assert.Equal<int[]>(expectedThrows, frame.Throws);
         }
+
+        [Theory]
+        [InlineData("4/", true)]
+        [InlineData("4/4", false)]
+        public void IsSpare(string scoreCard, bool expected)
+        {
+            Frame frame = new Frame(scoreCard);
+            Assert.Equal<bool>(expected, frame.IsSpare);
+        }
+
+        [Theory]
+        [InlineData("X", true)]
+        [InlineData("XXX", false)]
+        [InlineData("XX-", false)]
+        [InlineData("X--", false)]
+        public void IsStrike(string scoreCard, bool expected)
+        {
+            Frame frame = new Frame(scoreCard);
+            Assert.Equal<bool>(expected, frame.IsStrike);
+        }
     }
 }
