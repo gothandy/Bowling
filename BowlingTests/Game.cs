@@ -20,12 +20,24 @@ namespace BowlingTests
         private int GetTotalScore()
         {
             int total = 0;
-            foreach(Frame frame in frames)
+
+            for(int i = 0; i< frames.Count; i++)
             {
-                foreach (int t in frame.Throws) total += t;
+                Frame frame = frames[i];
+
+                total += AddThrowsForThisFrame(frame);
+
+                if (i < 10 && frame.IsSpare) total += frames[i + 1].Throws[0];
             }
 
             return total;
+        }
+
+        private static int AddThrowsForThisFrame(Frame frame)
+        {
+            int t = 0;
+            foreach (int i in frame.Throws) t += i;
+            return t;
         }
     }
 }

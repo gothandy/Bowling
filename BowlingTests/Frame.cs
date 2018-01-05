@@ -38,5 +38,7 @@ namespace BowlingTests
         }
 
         public int[] Throws => throws;
+
+        public bool IsSpare { get { return (throws.Length == 2 && (throws[0] + throws[1] == 10)); } }
     }
 }
