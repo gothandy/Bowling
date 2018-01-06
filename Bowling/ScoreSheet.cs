@@ -12,26 +12,37 @@ namespace Bowling
 
         public static int[] GetPinsKnockedDown(string scoreSheetFrame)
         {
-            if (scoreSheetFrame[1] == Spare)
+            return GetPinsKnockedDown(scoreSheetFrame.ToCharArray());
+        }
+
+        public static int[] GetPinsKnockedDown(char[] scoreSheetFrame)
+        {
+            ReplaceSpareWithNumber(scoreSheetFrame);
+
+            return scoreSheetFrame.Select(c => pinsFromChar(c)).ToArray();
+        }
+
+        private static void ReplaceSpareWithNumber(char[] scoreSheetFrame)
+        {
+            if (scoreSheetFrame.Length > 1 && scoreSheetFrame[1] == Spare)
             {
-                int firstBall = pinsFromChar(scoreSheetFrame[0]);
-                return new int[] { firstBall, 10 - firstBall };
-            }
-            else
-            {
-                return scoreSheetFrame.Select(c => pinsFromChar(c)).ToArray();
+                
+                scoreSheetFrame[1] = ConvertIntToScoreCardChar(10 - pinsFromChar(scoreSheetFrame[0]));
             }
         }
 
-        private static int ConvertCharToInt(char c)
+        private static char ConvertIntToScoreCardChar(int i)
         {
-            return Convert.ToInt32(c.ToString());
+            if (i == 10) return Strike;
+            return i.ToString().ToCharArray()[0];
         }
 
         private static int pinsFromChar(char c)
         {
             if (c == Miss || c == Foul) return 0;
-            if (Char.IsDigit(c)) return ConvertCharToInt(c);
+            if (c == Strike) return 10;
+
+            if (Char.IsDigit(c)) return Convert.ToInt32(c.ToString());
 
             throw (new NotImplementedException());
         }
