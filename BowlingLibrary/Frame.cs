@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace BowlingTests
+namespace Bowling
 {
     public class Frame
     {

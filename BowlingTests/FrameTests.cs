@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using Bowling;
+using Xunit;
 
 namespace BowlingTests
 {

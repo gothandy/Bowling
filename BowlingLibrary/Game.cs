@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace BowlingTests
+namespace Bowling
 {
     public class Game
     {
-        private List<Frame> frames = new List<Frame>();
+        private List<Frame> frames;
 
         public Game(string scoreSheet)
         {
-            foreach(string frameScoreSheet in scoreSheet.Split(' '))
-            {
-                frames.Add(new Frame(frameScoreSheet));
-            }
+            frames = BowlingConvert.ScoreSheetToFrameList(scoreSheet);
         }
 
         public int TotalScore
