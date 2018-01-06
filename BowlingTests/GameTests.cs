@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace BowlingTests
@@ -10,7 +11,7 @@ namespace BowlingTests
         [InlineData("5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5", 150)]
         public void TotalScore(string scoreSheet, int totalScore)
         {
-
+            throw (new NotImplementedException());
         }
     }
 }
