@@ -39,7 +39,7 @@ namespace BowlingTests
 
         public int[] Throws => throws;
 
-        internal int Total
+        public int Total
         {
             get
             {
@@ -49,8 +49,8 @@ namespace BowlingTests
             }
         }
 
-        internal bool IsSpare { get { return (throws.Length == 2 && (Total == 10)); } }
+        public bool IsSpare { get { return (throws.Length == 2 && (Total == 10)); } }
 
-        internal bool IsStrike { get { return (throws.Length == 1 && (Total == 10)); } }
+        public bool IsStrike { get { return (throws.Length == 1 && (Total == 10)); } }
     }
 }
