@@ -9,6 +9,9 @@ namespace Bowling
         public const char Foul = 'F';
         public const char Miss = '-';
 
-
+        public static int[] GetPinsKnockedDown(string scoreSheetFrame)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
