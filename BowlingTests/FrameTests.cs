@@ -15,9 +15,11 @@ namespace BowlingTests
         [InlineData("4/4", 4, 6, 4)]
         [InlineData("X", 10)]
         [InlineData("XXX", 10, 10, 10)]
-        public void TwoMisses (string scoreCard, params int[] expectedThrows)
+        public void TwoMisses (string scoreSheetFrame, params int[] expectedThrows)
         {
-            Frame frame = new Frame(scoreCard);
+            int[] throws = ScoreSheet.ConvertToThrowArray(scoreSheetFrame);
+
+            Frame frame = new Frame(throws);
 
             Assert.Equal<int[]>(expectedThrows, frame.Throws);
         }
@@ -25,9 +27,12 @@ namespace BowlingTests
         [Theory]
         [InlineData("4/", true)]
         [InlineData("4/4", false)]
-        public void IsSpare(string scoreCard, bool expected)
+        public void IsSpare(string scoreSheetFrame, bool expected)
         {
-            Frame frame = new Frame(scoreCard);
+            int[] throws = ScoreSheet.ConvertToThrowArray(scoreSheetFrame);
+
+            Frame frame = new Frame(throws);
+
             Assert.Equal<bool>(expected, frame.IsSpare);
         }
 
@@ -36,9 +41,12 @@ namespace BowlingTests
         [InlineData("XXX", false)]
         [InlineData("XX-", false)]
         [InlineData("X--", false)]
-        public void IsStrike(string scoreCard, bool expected)
+        public void IsStrike(string scoreSheetFrame, bool expected)
         {
-            Frame frame = new Frame(scoreCard);
+            int[] throws = ScoreSheet.ConvertToThrowArray(scoreSheetFrame);
+
+            Frame frame = new Frame(throws);
+
             Assert.Equal<bool>(expected, frame.IsStrike);
         }
     }

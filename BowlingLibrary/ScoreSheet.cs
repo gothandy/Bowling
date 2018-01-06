@@ -5,23 +5,18 @@ namespace Bowling
 {
     public static class ScoreSheet
     {
-        public static List<Frame> ConvertToFrameList(string scoreSheet)
+        public static List<int[]> ConvertToFrameList(string scoreSheet)
         {
-            List<Frame> frames = new List<Frame>();
+            List<int[]> frames = new List<int[]>();
 
             foreach (string scoreSheetFrame in scoreSheet.Split(' '))
             {
-                frames.Add(ScoreSheet.ConvertToFrame(scoreSheetFrame));
+                int[] throws = ScoreSheet.ConvertToThrowArray(scoreSheetFrame);
+
+                frames.Add(throws);
             }
 
             return frames;
-        }
-
-        public static Frame ConvertToFrame(string scoreSheetFrame)
-        {
-            Frame frame = new Frame(scoreSheetFrame);
-
-            return frame;
         }
 
         public static int[] ConvertToThrowArray(string scoreSheetFrame)

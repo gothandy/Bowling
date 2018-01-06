@@ -6,9 +6,9 @@ namespace Bowling
     {
         private int[] throws;
 
-        public Frame(string scoreSheetFrame)
+        public Frame(int[] throws)
         {
-            throws = ScoreSheet.ConvertToThrowArray(scoreSheetFrame);
+            this.throws = throws;
         }
 
         public int[] Throws => throws;

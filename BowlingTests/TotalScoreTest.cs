@@ -1,4 +1,5 @@
 using Bowling;
+using System.Collections.Generic;
 using Xunit;
 
 namespace BowlingTests
@@ -11,7 +12,9 @@ namespace BowlingTests
         [InlineData("5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5", 150)]
         public void TotalScore(string scoreSheet, int totalScore)
         {
-            Game game = new Game(scoreSheet);
+            List<int[]> frames = ScoreSheet.ConvertToFrameList(scoreSheet);
+
+            Game game = new Game(frames);
 
             Assert.Equal(totalScore, game.TotalScore);
         }

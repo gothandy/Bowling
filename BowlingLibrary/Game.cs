@@ -4,11 +4,11 @@ namespace Bowling
 {
     public class Game
     {
-        private List<Frame> frames;
+        private List<Frame> frames = new List<Frame>();
 
-        public Game(string scoreSheet)
+        public Game(List<int[]> frames)
         {
-            frames = ScoreSheet.ConvertToFrameList(scoreSheet);
+            foreach(int[] throws in frames) this.frames.Add(new Frame(throws));
         }
 
         public int TotalScore
