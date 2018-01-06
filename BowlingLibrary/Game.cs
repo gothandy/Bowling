@@ -8,7 +8,7 @@ namespace Bowling
 
         public Game(string scoreSheet)
         {
-            frames = BowlingConvert.ScoreSheetToFrameList(scoreSheet);
+            frames = ScoreSheet.ConvertToFrameList(scoreSheet);
         }
 
         public int TotalScore
