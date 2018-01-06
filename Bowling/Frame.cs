@@ -1,24 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Bowling
 {
     public class Frame
     {
         
-        private int[] pins;
+        private int[] pinsKnockedDown;
 
-        public Frame(int[] pins)
+        public Frame(int[] pinsKnockedDown)
         {
-            this.pins = pins;
+            this.pinsKnockedDown = pinsKnockedDown;
         }
 
-        public int PinTotal
+        public int Score
         {
             get
             {
+                if (this.IsOpenFrame) return this.pinsKnockedDown.Sum();
+
                 throw (new NotImplementedException());
             }
         }
+
+        public bool IsOpenFrame => (pinsKnockedDown.Sum() < 10);
     }
 }

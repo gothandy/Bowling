@@ -8,7 +8,7 @@
 The aim of this branch is to maximise readability. In esscence to make the Rules of the game crystal clear.
 
 ### Glossary
-- **Pin** things to knock over.
+- **Pin** to knock down.
 - **Rack** a set of 10 pins.
 - **Ball** (aka. Throw or Delivery) a single attempt by the bowler to knock down pins.
 - **Frame** (aka. *Turn*) a set of one, two or three throws of the ball. May also involve re-racking the pins.

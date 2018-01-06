@@ -7,11 +7,11 @@ namespace BowlingTests
     {
         [Theory]
         [InlineData(8, 5, 3)]
-        public void OpenFramePinTotal(int expectedTotal, params int[] pins)
+        public void OpenFrameScore(int expectedScore, params int[] pins)
         {
             Frame frame = new Frame(pins);
 
-            Assert.Equal<int>(expectedTotal, frame.PinTotal);
+            Assert.Equal<int>(expectedScore, frame.Score);
         }
     }
 }
