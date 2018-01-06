@@ -5,6 +5,7 @@ namespace BowlingTests
 {
     public class GameTests
     {
+        /*
         const string perfectGame = "X X X X X X X X X X X X";
         const string cleanSheetFiveFive = "5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5";
         const string dutchTwoHundred = "5/ X 5/ X 5/ X 5/ X 5/ X 5/5";
@@ -19,5 +20,6 @@ namespace BowlingTests
         {
             throw (new NotImplementedException());
         }
+        */
     }
 }

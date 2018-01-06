@@ -1,5 +1,7 @@
 ﻿using Bowling;
+using System.Collections.Generic;
 using Xunit;
+using System.Linq;
 
 namespace BowlingTests
 {
@@ -16,9 +18,11 @@ namespace BowlingTests
         [InlineData("XXX", 10, 10, 10)]
         [InlineData("5/5", 5, 5, 5)]
         [InlineData("5/X", 5, 5, 10)]
-        public void GetPinsKnockedDown(string frame, params int[] expected)
+        public void SingleFrame(string frameStr, params int[] expected)
         {
-            int[] actual = ScoreSheet.GetPinsKnockedDown(frame);
+            Ball[] balls = ScoreSheet.GetBalls(frameStr);
+
+            int[] actual = balls.Select(b => b.PinsKnockedOver).ToArray();
 
             Assert.Equal<int[]>(expected, actual);
         }

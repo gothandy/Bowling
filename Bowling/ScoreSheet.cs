@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Bowling
@@ -10,39 +11,28 @@ namespace Bowling
         public const char Foul = 'F';
         public const char Miss = '-';
 
-        public static int[] GetPinsKnockedDown(string scoreSheetFrame)
+        public static Ball[] GetBalls(string frame)
         {
-            return GetPinsKnockedDown(scoreSheetFrame.ToCharArray());
-        }
+            Ball previousBall = null;
+            List<Ball> balls = new List<Ball>();
 
-        public static int[] GetPinsKnockedDown(char[] scoreSheetFrame)
-        {
-            ReplaceSpareWithNumber(scoreSheetFrame);
-
-            return scoreSheetFrame.Select(c => pinsFromChar(c)).ToArray();
-        }
-
-        private static void ReplaceSpareWithNumber(char[] scoreSheetFrame)
-        {
-            if (scoreSheetFrame.Length > 1 && scoreSheetFrame[1] == Spare)
+            foreach(char c in frame)
             {
-                
-                scoreSheetFrame[1] = ConvertIntToScoreCardChar(10 - pinsFromChar(scoreSheetFrame[0]));
+                Ball ball = getBall(c, previousBall);
+                balls.Add(ball);
+                previousBall = ball;
             }
+
+            return balls.ToArray();
         }
 
-        private static char ConvertIntToScoreCardChar(int i)
+        private static Ball getBall(char ball, Ball previous)
         {
-            if (i == 10) return Strike;
-            return i.ToString().ToCharArray()[0];
-        }
-
-        private static int pinsFromChar(char c)
-        {
-            if (c == Miss || c == Foul) return 0;
-            if (c == Strike) return 10;
-
-            if (Char.IsDigit(c)) return Convert.ToInt32(c.ToString());
+            if (ball == Strike) return new Strike();
+            if (ball == Spare) return new Spare(previous);
+            if (ball == Foul) return new Ball(0);
+            if (ball == Miss) return new Ball(0);
+            if (Char.IsDigit(ball)) return new Ball(Convert.ToInt32(ball.ToString()));
 
             throw (new NotImplementedException());
         }
