@@ -14,7 +14,7 @@ namespace Bowling
         {
             if (scoreSheetFrame[1] == Spare)
             {
-                int firstBall = ConvertCharToInt(scoreSheetFrame[0]);
+                int firstBall = pinsFromChar(scoreSheetFrame[0]);
                 return new int[] { firstBall, 10 - firstBall };
             }
             else
