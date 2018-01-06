@@ -4,7 +4,7 @@ using Xunit;
 
 namespace BowlingTests
 {
-    public class TotalScoreTest
+    public class GameTests
     {
         [Theory]
         [InlineData("X X X X X X X X X XXX", 300)]

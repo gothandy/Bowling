@@ -25,7 +25,7 @@ namespace Bowling
 
             for (int i = 0; i < scoreSheetFrame.Length; i++)
             {
-                throws[i] = getNumberOfThrowsFromScoreCardChar(scoreSheetFrame[i]);
+                throws[i] = getNumberOfThrowsFromScoreSheetChar(scoreSheetFrame[i]);
             }
 
             WhenSpareCalculateSecondThrow(throws);
@@ -38,7 +38,7 @@ namespace Bowling
             if (throws.Length > 1 && throws[1] == -1) throws[1] = 10 - throws[0];
         }
 
-        private static int getNumberOfThrowsFromScoreCardChar(char c)
+        private static int getNumberOfThrowsFromScoreSheetChar(char c)
         {
             if (char.IsNumber(c)) return Convert.ToInt32(c.ToString());
             if (c == 'X') return 10;
