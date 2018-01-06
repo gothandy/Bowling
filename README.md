@@ -30,7 +30,7 @@ The aim of this branch is to maximise readability. In esscence to make the Rules
 - '-' for a Miss.
 
 ### Scoring
-- For an Open Frame add the score of each ball.
+- For an Open Frame score is the number of pins knocked downs.
 - A Foul is equivilant to a Miss.
 - For a Spare score 10 plus the next ball.
 - For a Strike score 10 plus the next two balls.
