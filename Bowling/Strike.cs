@@ -3,7 +3,7 @@
     
     public class Strike : Ball
     {
-        [ScoreSheetBall('X')]
+        [Ball('X')]
         public Strike() : base(10) { }
     }
 }

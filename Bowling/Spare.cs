@@ -1,9 +1,8 @@
 ﻿namespace Bowling
 {
-   
     public class Spare : Ball
     {
-        [ScoreSheetBall('/')]
+        [Ball('/')]
         public Spare(Ball previousBall)
         {
             pins = 10 - previousBall.PinsKnockedOver;

@@ -4,11 +4,8 @@
     {
         protected int pins = 0;
 
-        [ScoreSheetBall('-')]
-        [ScoreSheetBall('F')]
-        public Ball() { }
+        protected Ball() { }
 
-        [ScoreSheetBall(IsDigit = true)]
         public Ball(int v)
         {
             this.pins = v;
