@@ -1,17 +1,72 @@
-using System;
+using Bowling;
 using Xunit;
 
 namespace BowlingTests
 {
     public class GameTests
     {
-        [Theory]
-        [InlineData("X X X X X X X X X X X X", 300)]
-        [InlineData("9- 9- 9- 9- 9- 9- 9- 9- 9- 9-", 90)]
-        [InlineData("5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5", 150)]
-        public void TotalScore(string scoreSheet, int totalScore)
+        [Fact]
+        public void Dutch200()
         {
-            throw (new NotImplementedException());
+            Game game = new Game();
+
+            for (int i = 0; i < 4; i++)
+            {
+                game.AddFrame(new Spare(5));
+                game.AddFrame(new Strike());
+            }
+
+            game.AddFrame(new Strike());
+            game.AddFrame(new FinalSpare(5, 5));
+
+            Assert.Equal(10, game.Frames.Count);
+            Assert.Equal<int>(200, game.TotalScore);
+        }
+
+        [Fact]
+        public void AllOpenNines()
+        {
+            Game game = new Game();
+
+            for (int i = 0; i < 10; i++)
+            {
+                game.AddFrame(new Open(9,0));
+            }
+
+            Assert.Equal(10, game.Frames.Count);
+            Assert.Equal<int>(90, game.TotalScore);
+        }
+
+        [Fact]
+        public void PerfectGame()
+        {
+            Game game = new Game();
+
+            for (int i = 0; i < 9; i++)
+            {
+                game.AddFrame(new Strike());
+            }
+
+            game.AddFrame(new FinalStrike(10, 10));
+
+            Assert.Equal(10, game.Frames.Count);
+            Assert.Equal<int>(300, game.TotalScore);
+        }
+
+        [Fact]
+        public void AllSpares()
+        {
+            Game game = new Game();
+
+            for (int i = 0; i < 9; i++)
+            {
+                game.AddFrame(new Spare(5));
+            }
+
+            game.AddFrame(new FinalSpare(5, 5));
+
+            Assert.Equal(10, game.Frames.Count);
+            Assert.Equal<int>(150, game.TotalScore);
         }
     }
 }
