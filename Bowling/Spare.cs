@@ -1,10 +1,12 @@
 ﻿namespace Bowling
 {
-    internal class Spare : Ball
+   
+    public class Spare : Ball
     {
+        [ScoreSheetBall('/')]
         public Spare(Ball previousBall)
         {
-            v = 10 - previousBall.PinsKnockedOver;
+            pins = 10 - previousBall.PinsKnockedOver;
         }
     }
 }

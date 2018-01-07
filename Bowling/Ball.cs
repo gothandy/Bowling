@@ -2,15 +2,18 @@
 {
     public class Ball
     {
-        protected int v;
+        protected int pins = 0;
 
+        [ScoreSheetBall('-')]
+        [ScoreSheetBall('F')]
         public Ball() { }
 
+        [ScoreSheetBall(IsDigit = true)]
         public Ball(int v)
         {
-            this.v = v;
+            this.pins = v;
         }
 
-        public int PinsKnockedOver { get { return v; } }
+        public int PinsKnockedOver { get { return pins; } }
     }
 }
