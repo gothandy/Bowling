@@ -2,17 +2,17 @@
 {
     public class Open : BaseFrame
     {
-        private int v1;
-        private int v2;
+        private int ball1;
+        private int ball2;
 
-        public Open(int v1, int v2)
+        public Open(int ball1, int ball2)
         {
-            this.v1 = v1;
-            this.v2 = v2;
+            this.ball1 = ball1;
+            this.ball2 = ball2;
         }
 
-        public override int Score => v1 + v2;
+        public override int Score => ball1 + ball2;
 
-        public override int[] Balls => new int[] { v1, v2 };
+        public override int[] Balls => new int[] { ball1, ball2 };
     }
 }

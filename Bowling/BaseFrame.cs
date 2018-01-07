@@ -4,12 +4,16 @@ namespace Bowling
 {
     public abstract class BaseFrame
     {
-        protected int i;
-        protected List<int> balls;
+        private int i;
+        private List<int> balls;
 
         public abstract int Score { get; }
 
         public abstract int[] Balls { get; }
+
+        protected int NextBall => balls[i];
+
+        protected int NextBall2 => balls[i + 1];
 
         public void AddBalls(ref List<int> balls)
         {

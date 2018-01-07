@@ -1,19 +1,18 @@
-﻿using System.Collections.Generic;
-using Bowling;
+﻿using Bowling;
 
 namespace BowlingTests
 {
     public class Spare : BaseFrame
     {
-        private int v;
+        private int ball1;
 
-        public Spare(int first)
+        public Spare(int ball1)
         {
-            this.v = first;
+            this.ball1 = ball1;
         }
 
-        public override int Score => 10 + balls[i];
+        public override int Score => 10 + NextBall;
 
-        public override int[] Balls => new int[] { v, 10 - v };
+        public override int[] Balls => new int[] { ball1, 10 - ball1 };
     }
 }

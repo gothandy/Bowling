@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bowling
+﻿namespace Bowling
 {
     public class FinalSpare : BaseFrame
     {
-        private int v1;
-        private int v2;
+        private int ball1;
+        private int ball3;
 
-        public FinalSpare(int v1, int v2)
+        public FinalSpare(int ball1, int ball3)
         {
-            this.v1 = v1;
-            this.v2 = v2;
+            this.ball1 = ball1;
+            this.ball3 = ball3;
         }
 
-        public override int Score => 10 + v2;
+        public override int Score => 10 + ball3;
 
-        public override int[] Balls => new int[] { v1, 10 - v1, v2 };
+        public override int[] Balls => new int[] { ball1, 10 - ball1, ball3 };
 
     }
 }

@@ -1,5 +1,6 @@
 using Bowling;
 using Xunit;
+using System.Linq;
 
 namespace BowlingTests
 {
@@ -19,7 +20,7 @@ namespace BowlingTests
             game.AddFrame(new Strike());
             game.AddFrame(new FinalSpare(5, 5));
 
-            Assert.Equal(10, game.Frames.Count);
+            Assert.Equal(10, game.Frames.Count());
             Assert.Equal<int>(200, game.TotalScore);
         }
 
@@ -33,7 +34,7 @@ namespace BowlingTests
                 game.AddFrame(new Open(9,0));
             }
 
-            Assert.Equal(10, game.Frames.Count);
+            Assert.Equal(10, game.Frames.Count());
             Assert.Equal<int>(90, game.TotalScore);
         }
 
@@ -49,7 +50,7 @@ namespace BowlingTests
 
             game.AddFrame(new FinalStrike(10, 10));
 
-            Assert.Equal(10, game.Frames.Count);
+            Assert.Equal(10, game.Frames.Count());
             Assert.Equal<int>(300, game.TotalScore);
         }
 
@@ -65,7 +66,7 @@ namespace BowlingTests
 
             game.AddFrame(new FinalSpare(5, 5));
 
-            Assert.Equal(10, game.Frames.Count);
+            Assert.Equal(10, game.Frames.Count());
             Assert.Equal<int>(150, game.TotalScore);
         }
     }

@@ -7,22 +7,24 @@ namespace Bowling
 {
     public class Game
     {
-        public List<BaseFrame> Frames = new List<BaseFrame>();
-        private List<int> Balls = new List<int>();
+        private List<BaseFrame> frames = new List<BaseFrame>();
+        private List<int> balls = new List<int>();
 
         public int TotalScore
         {
             get
             {
-                return Frames.Sum(f => f.Score);
+                return frames.Sum(f => f.Score);
             }
         }
 
         public void AddFrame(BaseFrame frame)
         {
-            Frames.Add(frame);
+            frames.Add(frame);
 
-            frame.AddBalls(ref Balls);
+            frame.AddBalls(ref balls);
         }
+
+        public IEnumerable<BaseFrame> Frames => frames.ToArray();
     }
 }
