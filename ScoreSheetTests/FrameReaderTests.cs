@@ -25,7 +25,7 @@ namespace ScoreSheetTests
             BaseFrame frame = GameReader.GetFrame(s);
 
             Assert.Equal(t, frame.GetType());
-            Assert.Equal<int>(p, frame.Balls);
+            Assert.Equal<int>(p, frame.PinsPerBall);
         }
     }
 }

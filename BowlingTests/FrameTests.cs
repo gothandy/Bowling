@@ -16,7 +16,7 @@ namespace BowlingTests
             frame.AddBalls(ref balls);
 
             Assert.Equal(2, frame.Score);
-            Assert.Equal<int>(new int[] { 1, 1 }, frame.Balls);
+            Assert.Equal<int>(new int[] { 1, 1 }, frame.PinsPerBall);
             Assert.Equal<int>(new int[] { 1, 1 }, balls);
         }
 
@@ -32,7 +32,7 @@ namespace BowlingTests
             balls.Add(2);
 
             Assert.Equal(12, frame.Score);
-            Assert.Equal<int>(new int[] { 1, 9 }, frame.Balls);
+            Assert.Equal<int>(new int[] { 1, 9 }, frame.PinsPerBall);
             Assert.Equal<int>(new int[] { 1, 9, 2 }, balls);
         }
 
@@ -49,7 +49,7 @@ namespace BowlingTests
             balls.Add(3);
 
             Assert.Equal(15, frame.Score);
-            Assert.Equal<int>(new int[] { 10 }, frame.Balls);
+            Assert.Equal<int>(new int[] { 10 }, frame.PinsPerBall);
             Assert.Equal<int>(new int[] { 10, 2, 3 }, balls);
         }
 
@@ -63,7 +63,7 @@ namespace BowlingTests
             frame.AddBalls(ref balls);
 
             Assert.Equal(15, frame.Score);
-            Assert.Equal<int>(new int[] { 1, 9, 5 }, frame.Balls);
+            Assert.Equal<int>(new int[] { 1, 9, 5 }, frame.PinsPerBall);
             Assert.Equal<int>(new int[] { 1, 9, 5 }, balls);
         }
 
@@ -77,7 +77,7 @@ namespace BowlingTests
             frame.AddBalls(ref balls);
 
             Assert.Equal(15, frame.Score);
-            Assert.Equal<int>(new int[] { 10, 2, 3 }, frame.Balls);
+            Assert.Equal<int>(new int[] { 10, 2, 3 }, frame.PinsPerBall);
             Assert.Equal<int>(new int[] { 10, 2, 3 }, balls);
         }
     }

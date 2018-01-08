@@ -18,7 +18,7 @@ namespace ScoreSheetTests
             Game game = GameReader.GetGame(scoreSheet);
 
             Assert.Equal(10, game.Frames.Count());
-            Assert.Equal(expectedPins, game.Frames.Sum(f => f.Balls.Sum()));
+            Assert.Equal(expectedPins, game.Frames.Sum(f => f.PinsPerBall.Sum()));
             Assert.Equal(expectedScore, game.TotalScore);
         }
     }
