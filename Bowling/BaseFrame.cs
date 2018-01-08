@@ -13,7 +13,7 @@ namespace Bowling
 
         protected int NextBall => balls[i];
 
-        protected int NextBall2 => balls[i + 1];
+        protected int NextTwoBalls => balls[i] + balls[i + 1];
 
         public void AddBalls(ref List<int> balls)
         {
