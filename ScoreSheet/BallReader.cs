@@ -16,6 +16,8 @@ namespace ScoreSheet
         {
             if (list.Contains<char>(c)) return 0;
 
+            if (IsStrike(c)) return 10;
+
             return Convert.ToInt32(c.ToString());
         }
 

@@ -14,6 +14,10 @@ namespace BowlingTests
         [InlineData("45", typeof(Open))]
         [InlineData("-/", typeof(Spare))]
         [InlineData("F9", typeof(Open))]
+        [InlineData("5/5", typeof(FinalSpare))]
+        [InlineData("X23", typeof(FinalStrike))]
+        [InlineData("XX3", typeof(FinalStrike))]
+        [InlineData("XXX", typeof(FinalStrike))]
         public void GetFrameReader(string s, Type t)
         {
             BaseFrame f = null;
@@ -22,7 +26,9 @@ namespace BowlingTests
             {
                 new StrikeReader(),
                 new SpareReader(),
-                new OpenReader()
+                new OpenReader(),
+                new FinalSpareReader(),
+                new FinalStrikeReader()
             };
 
             foreach(IFrameReader r in l) if (r.IsMatch(s)) f = r.GetFrame(s);
