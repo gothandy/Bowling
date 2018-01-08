@@ -1,6 +1,4 @@
-﻿using Bowling;
-
-namespace BowlingTests
+﻿namespace Bowling
 {
     public class Spare : BaseFrame
     {

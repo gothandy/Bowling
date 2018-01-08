@@ -10,13 +10,17 @@ namespace BowlingTests
     {
         [Theory]
         [InlineData("X", typeof(Strike))]
+        [InlineData("5/", typeof(Spare))]
+        [InlineData("45", typeof(Open))]
         public void GetReader(string s, Type t)
         {
             BaseFrame f = null;
 
             List<IFrameReader> l = new List<IFrameReader>()
             {
-                new StrikeReader()
+                new StrikeReader(),
+                new SpareReader(),
+                new OpenReader()
             };
 
             foreach(IFrameReader r in l) if (r.IsMatch(s)) f = r.GetFrame(s);
