@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bowling\Bowling.csproj" />
+    <ProjectReference Include="..\ScoreSheet\ScoreSheet.csproj" />
   </ItemGroup>
 
 </Project>
