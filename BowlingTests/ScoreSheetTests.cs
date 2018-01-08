@@ -2,6 +2,7 @@
 using ScoreSheet;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace BowlingTests
@@ -9,31 +10,21 @@ namespace BowlingTests
     public class ScoreSheetTests
     {
         [Theory]
-        [InlineData("X", typeof(Strike))]
-        [InlineData("5/", typeof(Spare))]
-        [InlineData("45", typeof(Open))]
-        [InlineData("-/", typeof(Spare))]
-        [InlineData("F9", typeof(Open))]
-        [InlineData("5/5", typeof(FinalSpare))]
-        [InlineData("X23", typeof(FinalStrike))]
-        [InlineData("XX3", typeof(FinalStrike))]
-        [InlineData("XXX", typeof(FinalStrike))]
-        public void GetFrameReader(string s, Type t)
+        [InlineData("X", typeof(Strike), 10)]
+        [InlineData("5/", typeof(Spare), 5,5)]
+        [InlineData("45", typeof(Open), 4,5)]
+        [InlineData("-/", typeof(Spare), 0,10)]
+        [InlineData("F9", typeof(Open), 0,9)]
+        [InlineData("5/5", typeof(FinalSpare), 5,5,5)]
+        [InlineData("X23", typeof(FinalStrike), 10,2,3)]
+        [InlineData("XX3", typeof(FinalStrike), 10,10,3)]
+        [InlineData("XXX", typeof(FinalStrike), 10,10,10)]
+        public void GetFrameReader(string s, Type t, params int[] p)
         {
-            BaseFrame f = null;
+            BaseFrame frame = GameReader.GetFrame(s);
 
-            List<IFrameReader> l = new List<IFrameReader>()
-            {
-                new StrikeReader(),
-                new SpareReader(),
-                new OpenReader(),
-                new FinalSpareReader(),
-                new FinalStrikeReader()
-            };
-
-            foreach(IFrameReader r in l) if (r.IsMatch(s)) f = r.GetFrame(s);
-
-            Assert.Equal(t, f.GetType());
+            Assert.Equal(t, frame.GetType());
+            Assert.Equal<int>(p, frame.Balls);
         }
 
         [Theory]
@@ -43,6 +34,20 @@ namespace BowlingTests
         public void  BallReaderGetPins(char c, int e)
         {
             Assert.Equal<int>(e, BallReader.GetPins(c));
+        }
+
+        [Theory]
+        [InlineData("X X X X X X X X X XXX", 300, 120)]
+        [InlineData("9- 9- 9- 9- 9- 9- 9- 9- 9- 9-", 90, 90)]
+        [InlineData("5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5", 150, 105)]
+        [InlineData("5/ X 5/ X 5/ X 5/ X 5/ X55", 200, 110)]
+        public void GameReaderTotalScore(string scoreSheet, int expectedScore, int expectedPins)
+        {
+            Game game = GameReader.GetGame(scoreSheet);
+
+            Assert.Equal(10, game.Frames.Count());
+            Assert.Equal(expectedPins, game.Frames.Sum(f => f.Balls.Sum()));
+            Assert.Equal(expectedScore, game.TotalScore);
         }
     }
 }

@@ -15,10 +15,10 @@ namespace BowlingTests
             {
                 game.AddFrame(new Spare(5));
                 game.AddFrame(new Strike());
+                
             }
-
-            game.AddFrame(new Strike());
-            game.AddFrame(new FinalSpare(5, 5));
+            game.AddFrame(new Spare(5));
+            game.AddFrame(new FinalStrike(5, 5));
 
             Assert.Equal(10, game.Frames.Count());
             Assert.Equal<int>(200, game.TotalScore);
