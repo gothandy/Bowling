@@ -2,15 +2,15 @@
 {
     public class Spare : BaseFrame
     {
-        private int ball1;
+        private int firstBall;
 
-        public Spare(int ball1)
+        public Spare(int firstBall)
         {
-            this.ball1 = ball1;
+            this.firstBall = firstBall;
         }
 
         public override int Score => 10 + NextBall;
 
-        public override int[] Balls => new int[] { ball1, 10 - ball1 };
+        public override int[] Balls => Pins(firstBall, 10 - firstBall);
     }
 }

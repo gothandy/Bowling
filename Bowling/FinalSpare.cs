@@ -2,18 +2,18 @@
 {
     public class FinalSpare : BaseFrame
     {
-        private int ball1;
-        private int ball3;
+        private int firstBall;
+        private int bonusBall;
 
-        public FinalSpare(int ball1, int ball3)
+        public FinalSpare(int firstBall, int bonusBall)
         {
-            this.ball1 = ball1;
-            this.ball3 = ball3;
+            this.firstBall = firstBall;
+            this.bonusBall = bonusBall;
         }
 
-        public override int Score => 10 + ball3;
+        public override int Score => 10 + bonusBall;
 
-        public override int[] Balls => new int[] { ball1, 10 - ball1, ball3 };
+        public override int[] Balls => Pins(firstBall, 10 - firstBall, bonusBall);
 
     }
 }

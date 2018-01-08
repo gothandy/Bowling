@@ -15,6 +15,8 @@ namespace Bowling
 
         protected int NextTwoBalls => balls[i] + balls[i + 1];
 
+        protected int[] Pins(params int[] pins) => pins;
+
         public void AddBalls(ref List<int> balls)
         {
             this.balls = balls;
