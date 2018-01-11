@@ -13,6 +13,6 @@
 
         public override int Score => 10 + secondBall + bonusBall;
 
-        public override int[] Balls => Pins(10, secondBall, bonusBall);
+        public override int[] PinsPerBall => Pins(10, secondBall, bonusBall);
     }
 }
