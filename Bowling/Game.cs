@@ -9,20 +9,14 @@ namespace Bowling
         private List<BaseFrame> frames = new List<BaseFrame>();
         private List<int> balls = new List<int>();
 
-        public int TotalScore
-        {
-            get
-            {
-                return frames.Sum(f => f.Score);
-            }
-        }
-
         public void AddFrame(BaseFrame frame)
         {
             frames.Add(frame);
 
             frame.AddBalls(ref balls);
         }
+
+        public int TotalScore => frames.Sum(f => f.Score);
 
         public IEnumerable<BaseFrame> Frames => frames.ToArray();
     }
